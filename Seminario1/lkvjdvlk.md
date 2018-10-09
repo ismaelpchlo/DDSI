@@ -1,25 +1,22 @@
 **Índice**   
 1. [Introducción](#id1)
 2. [Requisito de Datos](#id2)
-3. [Requisitos funcionales](#id3)
-4. [Requisitos semánticos](#id4)
-
-
-
+3. [Requisitos Funcionales](#id3)
+4. [Requisitos Semánticos](#id4)
 
 ## Introducción<a name="id1"></a>
-Deseamos crear un sistema de información que gestiona un concesionario de coches. Este sistema de información se dividirá en tres subsistemas: gestión de vehículos, lista de trabajadores y las ventas realizadas.
+Deseamos crear un sistema de información que gestiona un concesionario de coches. Este sistema de información se dividirá en tres subsistemas: gestión de vehículos, lista de trabajadores y ventas realizadas.
 
-- En la **gestión de vehículos** tendremos en cuenta la marca, el modelo, precio y la matrícula del coche y el subsistema se encargará de:
+- En la **gestión de vehículos** tendremos en cuenta la marca, el modelo, el precio y la matrícula del coche, y el subsistema se encargará de:
 	- Encargar vehículo a proveedor
 	- Anular encargo de vehículo
-	- Comprobar fecha de entrega
-	- Dar de alta un coche en el sistema
-	- Dar de baja un coche en el sistema
-	- Comprobar disponibilidad de un coches en el sistema  
+	- Comprobar vehículos disponibles
+	- Dar de alta un vehículo en el sistema
+	- Dar de baja un vehículo en el sistema
+	- Comprobar disponibilidad de un vehículo
 
 
-- En la **lista de trabajadores** llevaremos un recuento del nombre, apellido, teléfono y el DNI de cada persona para identificarlos.
+- En la **lista de trabajadores** llevaremos un recuento del nombre, apellido, teléfono y DNI de cada persona para identificarlos.
 	- Consultar lista de trabajadores
 	- Dar de alta un trabajador
 	- Dar de baja un trabajador
@@ -27,12 +24,13 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 	- Modificar datos de un trabajador  
 
 
-- Por último, en las **ventas realizadas** almacenaremos el coche que ha sido vendido. Almacenaremos los datos del coche (Marca, modelo y matrícula), y también el DNI tanto del vendedor como del comprador.
-	- Realizar una venta
-	- Modificar una venta
-	- Anular una venta
-	- Ver historial de ventas
-	- Ver estado de una venta  
+- Por último, en las **ventas realizadas** almacenaremos el vehículo que ha sido vendido. Almacenaremos los datos del coche (marca, modelo y matrícula), y también el DNI tanto del vendedor como del comprador.
+	- Realizar una venta o reserva
+	- Modificar una venta o reserva
+	- Anular una venta o reserva
+	- Ver historial de ventas y reservas
+	- Ver estado de una venta
+	- Comprobar fecha de entrega
 
 
 
@@ -88,7 +86,7 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 	- **Precio:** Tipo numérico con dos cifras decimales
 
 
-- ***RD1.8 Datos de salida para mostrar disponibilidad de un vehículo:***
+- ***RD1.8 Datos de salida para mostrar la disponibilidad de un vehículo:***
   - **Marca:** Cadena de hasta 15 caracteres no vacía
   - **Modelo:** Cadena de hasta 20 caracteres no vacía
   - **Matrícula:** Cadena de hasta 10 caracteres no vacía
@@ -104,7 +102,7 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
   - **Precio:** Tipo numérico con dos cifras decimales
 
 
-- ***RD2.1 Información de un trabajador para consulta***
+- ***RD2.1 Datos de entrada para consultar lista de trabajadores***
 	- **Nombre:** Cadena de hasta 50 caracteres no vacía
 	- **DNI:** Cadena alfanumérica
 	- **Horario:** Horas y días de servicio del trabajador
@@ -112,7 +110,7 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 	- **Ventas realizadas:** Historial de ventas realizadas  
 
 
-- ***RD2.2 Información de un trabajador para dar de alta***
+- ***RD2.2 Datos de entrada para dar de alta un trabajador***
 	- **Nombre:** Cadena de hasta 50 caracteres no vacía
 	- **DNI:** Cadena alfanumérica
 	- **Horario:** Horas y días de servicio del trabajador
@@ -120,7 +118,7 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 	- **Ventas realizadas:** Historial de ventas realizadas
 
 
-- ***RD2.3 Información de un trabajador para dar de baja***
+- ***RD2.3 Datos de entrada para dar de baja un trabajador***
 	- **Nombre:** Cadena de hasta 50 caracteres no vacía
 	- **DNI:** Cadena alfanumérica
 	- **Horario:** Horas y días de servicio del trabajador
@@ -128,7 +126,7 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 	- **Ventas realizadas:** Historial de ventas realizadas
 
 
-- ***RD2.4 Información de un trabajador para ver su historial de ventas***
+- ***RD2.4 Datos de entrada para ver historial de ventas de un trabajador***
 	- **Nombre:** Cadena de hasta 50 caracteres no vacía
 	- **DNI:** Cadena alfanumérica
 	- **Horario:** Horas y días de servicio del trabajador
@@ -136,7 +134,7 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 	- **Ventas realizadas:** Historial de ventas realizadas
 
 
-- ***RD2.5 Información de un trabajador para modificar sus datos***
+- ***RD2.5 Datos de entrada para modificar datos de un trabajador***
 	- **Nombre:** Cadena de hasta 50 caracteres no vacía
 	- **DNI:** Cadena alfanumérica
 	- **Horario:** Horas y días de servicio del trabajador
@@ -152,7 +150,7 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 	- **Ventas realizadas:** Historial de ventas realizadas
 
 
-- ***RD2.7 Lista de trabajadores de los cuales se muestra la siguiente información***
+- ***RD2.7 Datos de salida para consultar lista de trabajadores***
   - **Nombre:** Cadena de hasta 50 caracteres no vacía
   - **DNI:** Cadena alfanumérica
   - **Horario:** Horas y días de servicio del trabajador
@@ -160,7 +158,7 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
   - **Ventas realizadas:** Historial de ventas realizadas
 
 
-- ***RD2.8 Información de un trabajador a mostrar historial de ventas***
+- ***RD2.8 Datos de salida para ver historial de ventas de un trabajador***
   - **Nombre:** Cadena de hasta 50 caracteres no vacía
   - **DNI:** Cadena alfanumérica
   - **Horario:** Horas y días de servicio del trabajador
@@ -305,7 +303,7 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 	- **Fecha de entrega:** Tipo date dd/mm/yyyy
 
 
-- ***RD3.15 Datos de salida para ver comprobar fecha de entrega***
+- ***RD3.15 Datos de salida para comprobar fecha de entrega***
 	- **Matrícula:** Cadena de hasta 10 caracteres  no vacía
 	- **Nombre cliente:** Cadena de hasta 40 caracteres  no vacía
 	- **DNI cliente:** Cadena alfanumérica
@@ -466,8 +464,10 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 - ***RS2.2: Dos trabajadores no pueden tener el mismo DNI***
 	- **RF2.2,RD2.6**
 
+
 - ***RS3.1: Un vehículo no puede ser vendido a dos clientes distintos***
 	- **RF3.1,RD3.7**
+
 
 - ***RS3.2: Un vehículo no puede ser reservado por dos clientes distintos***
 	- **RF3.7,RD3.8**
