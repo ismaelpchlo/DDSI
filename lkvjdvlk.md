@@ -1,8 +1,13 @@
-# Concesionario de coches
-## Descripción de nuestro sistema de información
+**Índice**   
+1. [Introducción](#id1)
+2. [Requisito de Datos](#id2)
+3. [Requisitos funcionales](#id3)
+4. [Requisitos semánticos](#id4)
 
-##Introducción
 
+
+
+## Introducción<a name="id1"></a>
 Deseamos crear un sistema de información que gestiona un concesionario de coches. Este sistema de información se dividirá en tres subsistemas: gestión de vehículos, lista de trabajadores y las ventas realizadas.
 
 - En la **gestión de vehículos** tendremos en cuenta la marca, el modelo, precio y la matrícula del coche y el subsistema se encargará de:
@@ -30,7 +35,8 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 	- Ver estado de una venta  
 
 
-## Requisitos de datos
+
+## Requisitos de datos<a name="id2"></a>
 
 - ***RD1.1 Datos de entrada para encargar vehículo a proveedor:***
 	- **Marca:** Cadena de hasta 15 caracteres no vacía
@@ -318,7 +324,8 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
   - **Fecha de reserva:** Tipo date dd/mm/yyyy
 
 
-## Requisitos funcionales
+## Requisitos funcionales<a name="id3"></a>
+
 
 - ***RF1.1 Encargar vehículo a proveedor***
 	- **E:** RD1.1
@@ -446,22 +453,25 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
   - **S:** RD3.16
 
 
-## Requisitos Semánticos
 
-RS1.1: Dos vehículos no pueden tener la misma matrícula
-RF1.3,RD1.7
+## Requisitos semánticos <a name="id4"></a>
+- ***RS1.1: Dos vehículos no pueden tener la misma matrícula***
+ - **RF1.3,RD1.7**
 
-RS2.1: Dos trabajadores no pueden vender el mismo vehículo
-RF3.1,RD3.7
 
-RS2.2: Dos trabajadores no pueden tener el mismo DNI
-RF2.2,RD2.6
+- ***RS2.1: Dos trabajadores no pueden vender el mismo vehículo***
+	- **RF3.1,RD3.7**
 
-RS3.1: Un vehículo no puede ser vendido a dos clientes distintos
-RF3.1,RD3.7
 
-RS3.2: Un vehículo no puede ser reservado por dos clientes distintos
-RF3.7,RD3.8
+- ***RS2.2: Dos trabajadores no pueden tener el mismo DNI***
+	- **RF2.2,RD2.6**
 
-RS3.2: No se puede realizar una venta de un vehículo que no esté en stock
-RF3.1,RD1.7
+- ***RS3.1: Un vehículo no puede ser vendido a dos clientes distintos***
+	- **RF3.1,RD3.7**
+
+- ***RS3.2: Un vehículo no puede ser reservado por dos clientes distintos***
+	- **RF3.7,RD3.8**
+
+
+- ***RS3.2: No se puede realizar una venta de un vehículo que no esté en stock***
+	- **RF3.1,RD1.7**
