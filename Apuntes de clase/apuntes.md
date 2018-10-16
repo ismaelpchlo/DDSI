@@ -76,3 +76,19 @@ Se leen: "Un par trabajador-salario"
 ####Ciclos
 
 El uso de ciclos es usual
+
+error tipico: seguir dando clase a las 10:31
+
+
+Error típico al pasar a tablas:  No considerar que en el paso a tablas hay que hacer 3 cosas:
+-El nombre de la tabla
+-Los atributos
+-La clave
+
+Hay que preguntarse cuales son las cosas anteriores.
+La claves de la relación son las de las entidades que relaciona y los atributos
+propios de la relación
+
+
+
+###Tema 3
