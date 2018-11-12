@@ -92,3 +92,6 @@ propios de la relación
 
 
 ###Tema 3
+
+Si tenemos una tabla con Nombre y apellidos, únicamente hay 1 clave primaria compuesta
+por dos atributos

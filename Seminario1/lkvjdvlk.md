@@ -3,6 +3,13 @@
 2. [Requisito de Datos](#id2)
 3. [Requisitos Funcionales](#id3)
 4. [Requisitos Semánticos](#id4)
+5. [Practica 2](#id5)
+	1. [Esquema caja negra](#id6)
+	2. [Esquema armazón](#id7)
+	3. [Refinamientos de cada subsistema](#id7)
+	4. [Esquemas externos de procesos](#id8)
+	5. [Diagrama de Entidad Relación del sistema](#id9)
+
 
 ## Introducción<a name="id1"></a>
 Deseamos crear un sistema de información que gestiona un concesionario de coches. Este sistema de información se dividirá en tres subsistemas: gestión de vehículos, lista de trabajadores y ventas realizadas.
