@@ -9,6 +9,10 @@
 	3. [Refinamientos de cada subsistema](#id7)
 	4. [Esquemas externos de procesos](#id8)
 	5. [Diagrama de Entidad Relación del sistema](#id9)
+6. [Practica 3](#id10)
+	1. [Paso a tablas del diagrama E/R](#id11)
+	2. [Sentencias SQL para la creación de tablas](#id12)
+	3. [Fase de implementación](#id13)
 
 
 ## Introducción<a name="id1"></a>
