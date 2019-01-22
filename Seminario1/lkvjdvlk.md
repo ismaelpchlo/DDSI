@@ -44,17 +44,15 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 ## Requisitos de datos<a name="id2"></a>
 
 - ***RD1.1 Datos de entrada para encargar vehículo a proveedor:***
-	- **Marca:** Cadena de hasta 15 caracteres no vacía
+	- **Id. Administrador:** Cadena de hasta 15 caracteres no vacía
+	- **Id. Proveedor:** Cadena de hasta 15 caracteres no vacía
 	- **Modelo:** Cadena de hasta 20 caracteres no vacía
-	- **Matrícula:** Cadena de hasta 10 caracteres  no vacía
-	- **Precio:** Tipo numérico con dos cifras decimales
 
 
 - ***RD1.2 Datos de entrada para anular encargo de vehículo:***
-	- **Marca:** Cadena de hasta 15 caracteres no vacía
-	- **Modelo:** Cadena de hasta 20 caracteres no vacía
-	- **Matrícula:** Cadena de hasta 10 caracteres  no vacía
-	- **Precio:** Tipo numérico con dos cifras decimales
+- **Id. Administrador:** Cadena de hasta 15 caracteres no vacía
+- **Id. Proveedor:** Cadena de hasta 20 caracteres no vacía
+- **Modelo:** Cadena de hasta 20 caracteres no vacía
 
 
 - ***RD1.3 Datos de entrada para dar de alta un vehículo:***
@@ -65,24 +63,15 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 
 
 - ***RD1.4 Datos de entrada para dar de baja un vehículo:***
-	- **Marca:** Cadena de hasta 15 caracteres no vacía
-	- **Modelo:** Cadena de hasta 20 caracteres no vacía
 	- **Matrícula:** Cadena de hasta 10 caracteres  no vacía
-	- **Precio:** Tipo numérico con dos cifras decimales
 
 
 - ***RD1.5 Datos de entrada para comprobar disponibilidad de un vehículo:***
-	- **Marca:** Cadena de hasta 15 caracteres no vacía
-	- **Modelo:** Cadena de hasta 20 caracteres no vacía
 	- **Matrícula:** Cadena de hasta 10 caracteres  no vacía
-	- **Precio:** Tipo numérico con dos cifras decimales
 
 
 - ***RD1.6 Datos de entrada para comprobar vehículos disponibles:***
-	- **Marca:** Cadena de hasta 15 caracteres no vacía
-	- **Modelo:** Cadena de hasta 20 caracteres no vacía
-	- **Matrícula:** Cadena de hasta 10 caracteres  no vacía
-	- **Precio:** Tipo numérico con dos cifras decimales
+	- **Disponibilidad- stock:** Aquellos vehículos que estén en stock
 
 
 - ***RD1.7 Información de un vehículo almacenado:***
@@ -126,27 +115,15 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 
 
 - ***RD2.3 Datos de entrada para dar de baja un trabajador***
-	- **Nombre:** Cadena de hasta 50 caracteres no vacía
 	- **DNI:** Cadena alfanumérica
-	- **Horario:** Horas y días de servicio del trabajador
-	- **Teléfono de contacto:** Cadena numérica
-	- **Ventas realizadas:** Historial de ventas realizadas
 
 
 - ***RD2.4 Datos de entrada para ver historial de ventas de un trabajador***
-	- **Nombre:** Cadena de hasta 50 caracteres no vacía
 	- **DNI:** Cadena alfanumérica
-	- **Horario:** Horas y días de servicio del trabajador
-	- **Teléfono de contacto:** Cadena numérica
-	- **Ventas realizadas:** Historial de ventas realizadas
 
 
 - ***RD2.5 Datos de entrada para modificar datos de un trabajador***
-	- **Nombre:** Cadena de hasta 50 caracteres no vacía
 	- **DNI:** Cadena alfanumérica
-	- **Horario:** Horas y días de servicio del trabajador
-	- **Teléfono de contacto:** Cadena numérica
-	- **Ventas realizadas:** Historial de ventas realizadas
 
 
 - ***RD2.6 Información de un trabajador almacenado***
@@ -181,56 +158,30 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 	- **Importe:** Precio del vehículo
 	- **Fecha de venta:** Tipo date dd/mm/yyyy
 	- **Fecha de entrega:** Tipo date dd/mm/yyyy
+	- **Id. Venta:** Cadena de hasta 15 caracteres no vacía
+
 
 
 - ***RD3.2 Datos de entrada para modificar una venta***
-	- **Matrícula:** Cadena de hasta 10 caracteres  no vacía
-	- **Nombre cliente:** Cadena de hasta 40 caracteres  no vacía
-	- **DNI cliente:** Cadena alfanumérica
-	- **Vendedor:** Nombre del trabajador que efectúa la venta
-	- **Importe:** Precio del vehículo
-	- **Fecha de venta:** Tipo date dd/mm/yyyy
-	- **Fecha de entrega:** Tipo date dd/mm/yyyy
+	- **Id. Venta:** Cadena de hasta 15 caracteres no vacía
 
 
 - ***RD3.3 Datos de entrada para anular una venta***
-	- **Matrícula:** Cadena de hasta 10 caracteres  no vacía
-	- **Nombre cliente:** Cadena de hasta 40 caracteres  no vacía
-	- **DNI cliente:** Cadena alfanumérica
-	- **Vendedor:** Nombre del trabajador que efectúa la venta
-	- **Importe:** Precio del vehículo
-	- **Fecha de venta:** Tipo date dd/mm/yyyy
-	- **Fecha de entrega:** Tipo date dd/mm/yyyy
+	- **Id. Venta:** Cadena de hasta 15 caracteres no vacía
 
 
 - ***RD3.4 Datos de entrada para ver historial de ventas***
-	- **Matrícula:** Cadena de hasta 10 caracteres  no vacía
-	- **Nombre cliente:** Cadena de hasta 40 caracteres  no vacía
-	- **DNI cliente:** Cadena alfanumérica
-	- **Vendedor:** Nombre del trabajador que efectúa la venta
-	- **Importe:** Precio del vehículo
-	- **Fecha de venta:** Tipo date dd/mm/yyyy
-	- **Fecha de entrega:** Tipo date dd/mm/yyyy
+	- **Fecha inicial:** Tipo date dd/mm/yyyy
+	- **Fecha final:** Tipo date dd/mm/yyyy
 
 
 - ***RD3.5 Datos de entrada para ver estado de la venta***
-	- **Matrícula:** Cadena de hasta 10 caracteres  no vacía
-	- **Nombre cliente:** Cadena de hasta 40 caracteres  no vacía
-	- **DNI cliente:** Cadena alfanumérica
-	- **Vendedor:** Nombre del trabajador que efectúa la venta
-	- **Importe:** Precio del vehículo
-	- **Fecha de venta:** Tipo date dd/mm/yyyy
-	- **Fecha de entrega:** Tipo date dd/mm/yyyy
+	- **Id. Venta:** Cadena de hasta 15 caracteres no vacía
 
 
 - ***RD3.6 Datos de entrada para ver fecha de entrega***
-	- **Matrícula:** Cadena de hasta 10 caracteres  no vacía
-	- **Nombre cliente:** Cadena de hasta 40 caracteres  no vacía
-	- **DNI cliente:** Cadena alfanumérica
-	- **Vendedor:** Nombre del trabajador que efectúa la venta
-	- **Importe:** Precio del vehículo
-	- **Fecha de venta:** Tipo date dd/mm/yyyy
-	- **Fecha de entrega:** Tipo date dd/mm/yyyy
+	- **Id. Venta:** Cadena de hasta 15 caracteres no vacía
+
 
 
 - ***RD3.7 Información de una venta almacenada***
@@ -250,6 +201,8 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
   - **Vendedor:** Nombre del trabajador que efectúa la reserva
   - **Fianza:** Cantidad a pagar por adelantado
   - **Fecha de reserva:**  Tipo date dd/mm/yyyy
+	- **Id. Reserva:** Cadena de hasta 15 caracteres no vacía
+
 
 
 - ***RD3.9 Datos de entrada para realizar una reserva***
@@ -259,33 +212,20 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 	- **Vendedor:** Nombre del trabajador que efectúa la venta
 	- **Fianza:** Cantidad a pagar por adelantado
 	- **Fecha de reserva:**  Tipo date dd/mm/yyyy
+	- **Id. Reserva:** Cadena de hasta 15 caracteres no vacía
 
 
 - ***RD3.10 Datos de entrada para modificar una reserva***
-	- **Matrícula:** Cadena de hasta 10 caracteres  no vacía
-	- **Nombre cliente:** Cadena de hasta 40 caracteres  no vacía
-	- **DNI cliente:** Cadena alfanumérica
-	- **Vendedor:** Nombre del trabajador que efectúa la venta
-	- **Fianza:** Cantidad a pagar por adelantado
-	- **Fecha de reserva:**  Tipo date dd/mm/yyyy
+	- **Id. Reserva:** Cadena de hasta 15 caracteres no vacía
 
 
 - ***RD3.11 Datos de entrada para anular una reserva***
-	- **Matrícula:** Cadena de hasta 10 caracteres  no vacía
-	- **Nombre cliente:** Cadena de hasta 40 caracteres  no vacía
-	- **DNI cliente:** Cadena alfanumérica
-	- **Vendedor:** Nombre del trabajador que efectúa la venta
-	- **Fianza:** Cantidad a pagar por adelantado
-	- **Fecha de reserva:**  Tipo date dd/mm/yyyy
+	- **Id. Reserva:** Cadena de hasta 15 caracteres no vacía
 
 
 - ***RD3.12 Datos de entrada para ver historial de reservas***
-	- **Matrícula:** Cadena de hasta 10 caracteres  no vacía
-	- **Nombre cliente:** Cadena de hasta 40 caracteres  no vacía
-	- **DNI cliente:** Cadena alfanumérica
-	- **Vendedor:** Nombre del trabajador que efectúa la venta
-	- **Fianza:** Cantidad a pagar por adelantado
-	- **Fecha de reserva:** Tipo date dd/mm/yyyy
+	- **Fecha inicial:** Tipo date dd/mm/yyyy
+	- **Fecha final:** Tipo date dd/mm/yyyy
 
 
 - ***RD3.13 Datos de salida para ver historial de ventas***
@@ -296,7 +236,6 @@ Deseamos crear un sistema de información que gestiona un concesionario de coche
 	- **Importe:** Precio del vehículo
 	- **Fecha de venta:** Tipo date dd/mm/yyyy
 	- **Fecha de entrega:** Tipo date dd/mm/yyyy
-
 
 
 

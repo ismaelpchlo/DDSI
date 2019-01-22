@@ -12,12 +12,16 @@ cursor= connection.cursor()
 
 #cursor.execute("""DROP TABLE Administrador;""")
 #cursor.execute("""DROP TABLE Trabajador;""")
+#cursor.execute("""DROP TABLE Vehiculo;""")
+#cursor.execute("""DROP TABLE Proveedor;""")
 #cursor.execute("""DROP TABLE Ventas;""")
-#cursor.execute("""DROP TABLE Historial;""")
-#cursor.execute("""DROP TABLE DarAlta;""")
-#cursor.execute("""DROP TABLE DarBaja;""")
-#cursor.execute("""DROP TABLE Consulta;""")
-#cursor.execute("""DROP TABLE ModificaDatos;""")
+#cursor.execute("""DROP TABLE Encargar;""")
+#cursor.execute("""DROP TABLE Suministra;""")
+#cursor.execute("""DROP TABLE Gestiona;""")
+#cursor.execute("""DROP TABLE Reservas;""")
+#cursor.execute("""DROP TABLE Gestiona1;""")
+#cursor.execute("""DROP TABLE Gestiona2;""")
+#cursor.execute("""DROP TABLE Realiza;""")
 
 #------------------------------------------------
 # CREACIÓN DE TABLAS
@@ -35,8 +39,8 @@ if cursor.fetchone() !=('Administrador',):
 	cursor.execute(sql_command)
 	print("Se ha creado la tabla Administrador")
 
-# Tabla Trabajador
 
+# Tabla Trabajador
 sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='Trabajador';"""
 cursor.execute(sql_command)
 if cursor.fetchone() !=('Trabajador',):
@@ -53,20 +57,50 @@ if cursor.fetchone() !=('Trabajador',):
 	print("Se ha creado la tabla Trabajador")
 
 
+
+# Tabla Vehiculo
+sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='Vehiculo';"""
+cursor.execute(sql_command)
+if cursor.fetchone() !=('Vehiculo',):
+	sql_command="""
+	CREATE TABLE Vehiculo(
+		Matricula varchar(10) PRIMARY KEY,
+		Marca varchar(15) NOT NULL,
+		Modelo varchar(20),
+		Disponibilidad varchar2(15) CHECK (Disponibilidad IN ('stock', 'agotado', 			'reservado', 'encargado')),
+		Precio varchar(15)
+	);"""
+
+	cursor.execute(sql_command)
+	print("Se ha creado la tabla Vehiculo")
+
+
+# Tabla Proveedor
+sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='Proveedor';"""
+cursor.execute(sql_command)
+if cursor.fetchone() !=('Proveedor',):
+	sql_command="""
+	CREATE TABLE Proveedor(
+		IdentificadorP int PRIMARY KEY,
+		Nombre_empresa varchar(50) NOT NULL
+	);"""
+
+	cursor.execute(sql_command)
+	print("Se ha creado la tabla Proveedor")
+
+
+
 # Tabla Ventas
 sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='Ventas';"""
 cursor.execute(sql_command)
 if cursor.fetchone() !=('Ventas',):
 	sql_command="""
 	CREATE TABLE Ventas(
-		Matricula varchar(10),
-		Nombre_cliente varchar(50) NOT NULL,
-		DNI_cliente int,
-		DNI_vendedor int REFERENCES Trabajador(DNI),
-		Importe int,
-		Fecha_venta date,
-		Fecha_Entrega date,
-		PRIMARY KEY(DNI_cliente, DNI_vendedor, Matricula)
+	  	Identificador int,
+		Matricula varchar(10) REFERENCES Vehiculo(Matricula),
+	    DNI_cliente int,
+	    Fecha_venta date,
+	    PRIMARY KEY(Identificador)
 	);"""
 
 	cursor.execute(sql_command)
@@ -76,83 +110,119 @@ if cursor.fetchone() !=('Ventas',):
 
 
 
-#Tabla DarAlta
-sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='DarAlta'; """
+#Tabla Encargar
+sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='Encargar'; """
 cursor.execute(sql_command)
-if cursor.fetchone() !=('DarAlta',):
+if cursor.fetchone() !=('Encargar',):
 	sql_command="""
-	CREATE TABLE DarAlta(
-		DNI varchar(9) REFERENCES Trabajador(DNI),
+	CREATE TABLE Encargar(
 		Identificador int REFERENCES Administrador(Identificador),
-		PRIMARY KEY(DNI, Identificador)
+		IdentificadorP int REFERENCES Proveedor(IdentificadorP),
+		Matricula varchar(10) REFERENCES Vehiculo(Matricula),
+		Fecha DATE,
+		PRIMARY KEY( Matricula)
 	);"""
 
 	cursor.execute(sql_command)
-	print("Se ha creado la tabla DarAlta")
+	print("Se ha creado la tabla Encargar")
 
 
-#Tabla Historial
-sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='Historial'; """
+#Tabla Suministra
+sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='Suministra'; """
 cursor.execute(sql_command)
-if cursor.fetchone() !=('Historial',):
+if cursor.fetchone() !=('Suministra',):
 	sql_command="""
-	CREATE TABLE Historial(
-		DNI varchar(9) REFERENCES Trabajador(DNI),
+	CREATE TABLE Suministra(
+		IdentificadorP int REFERENCES Proveedor(IdentificadorP),
+		Matricula varchar(10) REFERENCES Vehiculo(Matricula),
+		PRIMARY KEY( Matricula)
+	);
+	"""
+
+	cursor.execute(sql_command)
+	print("Se ha creado la tabla Suministra")
+
+
+#Tabla Gestiona
+sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='Gestiona'; """
+cursor.execute(sql_command)
+if cursor.fetchone() !=('Gestiona',):
+	sql_command="""
+	CREATE TABLE Gestiona(
 		Identificador int REFERENCES Administrador(Identificador),
-		fecha date,
-		PRIMARY KEY(DNI, Identificador, fecha)
+		Matricula varchar(10) REFERENCES Vehiculo(Matricula),
+		PRIMARY KEY( Identificador, Matricula)
 	);"""
 
 	cursor.execute(sql_command)
-	print("Se ha creado la tabla Historial")
+	print("Se ha creado la tabla Gestiona")
 
 
-#Tabla DarBaja
-sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='DarBaja'; """
+
+
+#Tabla Reservas
+sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='Reservas'; """
 cursor.execute(sql_command)
-if cursor.fetchone() !=('DarBaja',):
+if cursor.fetchone() !=('Reservas',):
 	sql_command="""
-	CREATE TABLE DarBaja(
-		DNI varchar(9) REFERENCES Trabajador(DNI),
-		Identificador int REFERENCES Administrador(Identificador),
-		PRIMARY KEY(DNI, Identificador)
+	CREATE TABLE Reservas(
+	  	Identificador int,
+	    	Matricula varchar(10),
+	    	DNI_cliente int,
+	    	Fecha_realizada date,
+	    	Fecha_entrega date,
+	    	PRIMARY KEY(Identificador)
 	);"""
 
 	cursor.execute(sql_command)
-	print("Se ha creado la tabla DarBaja")
+	print("Se ha creado la tabla Reservas")
 
 
-#Tabla Consulta
-sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='Consulta'; """
+#Tabla Gestiona1
+sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='Gestiona1'; """
 cursor.execute(sql_command)
-if cursor.fetchone() !=('Consulta',):
+if cursor.fetchone() !=('Gestiona1',):
 	sql_command="""
-	CREATE TABLE Consulta(
-		DNI varchar(9) REFERENCES Trabajador(DNI),
-		Identificador int REFERENCES Administrador(Identificador),
-		fecha date,
-		PRIMARY KEY(DNI, Identificador, fecha)
+	CREATE TABLE Gestiona1(
+		IdAdmin int REFERENCES Administrador(idAdmin),
+		Dni int REFERENCES Trabajador(Dni),
+		PRIMARY KEY(IdAdmin, Dni)
+		);"""
+
+	cursor.execute(sql_command)
+	print("Se ha creado la tabla Gestiona1")
+
+
+
+
+#Tabla Realiza
+sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='Realiza'; """
+cursor.execute(sql_command)
+if cursor.fetchone() !=('Realiza',):
+	sql_command="""
+	CREATE TABLE Realiza(
+		Id_trabajador int REFERENCES Trabajador(id_trabajador),
+	 	Id_reserva int REFERENCES Reserva(Id_reserva),
+		PRIMARY KEY(Id_reserva)
 	);"""
 
 	cursor.execute(sql_command)
-	print("Se ha creado la tabla Consulta")
+	print("Se ha creado la tabla Realiza")
 
 
-#Tabla ModificaDatos
-sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='ModificaDatos'; """
+#Tabla Gestiona2
+sql_command="""SELECT name FROM sqlite_master WHERE TYPE='table' AND name='Gestiona2'; """
 cursor.execute(sql_command)
-if cursor.fetchone() !=('ModificaDatos',):
+if cursor.fetchone() !=('Gestiona2',):
 	sql_command="""
-	CREATE TABLE ModificaDatos(
-		DNI varchar(9) REFERENCES Trabajador(DNI),
-		Identificador int REFERENCES Administrador(Identificador),
-		fecha date,
-		PRIMARY KEY(DNI, Identificador, fecha)
+	CREATE TABLE Gestiona2(
+		Id_trabajador int REFERENCES Trabajador(DNI),
+	 	Id_venta int REFERENCES Ventas(Identificador),
+		PRIMARY KEY(Id_venta)
 	);"""
 
 	cursor.execute(sql_command)
-	print("Se ha creado la tabla ModificaDatos")
-
+	print("Se ha creado la tabla Gestiona2")
 
 
 
@@ -177,25 +247,46 @@ cursor.execute(sql_command)
 
 
 
-sql_command="""INSERT INTO Ventas(Matricula, Nombre_cliente, DNI_cliente, DNI_vendedor, Importe, Fecha_venta, Fecha_Entrega ) VALUES
-	('T4WTH5', 'Laura Neko', '12234553', '54142189', '22.000', 20181219, 20181229);"""
 
-sql_command="""INSERT INTO Ventas(Matricula, Nombre_cliente, DNI_cliente, DNI_vendedor, Importe, Fecha_venta, Fecha_Entrega ) VALUES
-	('LKIU15', 'Elena Olmo', '43284983', '54142189', '20.000', 20181217, 20181219);"""
+sql_command="""INSERT INTO Gestiona2(Id_trabajador, Id_venta) VALUES
+	('54142189', 'T4WTH5');"""
 cursor.execute(sql_command)
 
-sql_command="""INSERT INTO Ventas(Matricula, Nombre_cliente, DNI_cliente, DNI_vendedor, Importe, Fecha_venta, Fecha_Entrega ) VALUES
-	('DDSIK1', 'Rosi Liante', '87352417', '54142189', '17.000', 20181117, 20181201);"""
+sql_command="""INSERT INTO Gestiona2(Id_trabajador, Id_venta) VALUES
+	('54142189', '0OLTH5');"""
 cursor.execute(sql_command)
 
-sql_command="""INSERT INTO Ventas(Matricula, Nombre_cliente, DNI_cliente, DNI_vendedor, Importe, Fecha_venta, Fecha_Entrega ) VALUES
-	('HF74F5', 'Ana Pena', '25384918', '54142189', '172.000', 20180617, 20180801);"""
+
+sql_command="""INSERT INTO Gestiona2(Id_trabajador, Id_venta) VALUES
+	('51142189', 'ERTG5');"""
 cursor.execute(sql_command)
 
-sql_command="""INSERT INTO Ventas(Matricula, Nombre_cliente, DNI_cliente, DNI_vendedor, Importe, Fecha_venta, Fecha_Entrega ) VALUES
-	('CFRTWW', 'Sam Mikrush', '75648392', '54142189', '12.000', 20180618, 20180802);"""
+
+
+
+sql_command="""INSERT INTO Ventas(Identificador, Matricula, DNI_cliente, Fecha_venta) VALUES
+	('T4WTH5', 'DGFRGT', '54142189', 20181229);"""
 cursor.execute(sql_command)
 
+
+sql_command="""INSERT INTO Ventas(Identificador, Matricula, DNI_cliente, Fecha_venta) VALUES
+	('0OLTH5', '12FRGT', '45675189', 20181229);"""
+cursor.execute(sql_command)
+
+
+sql_command="""INSERT INTO Ventas(Identificador, Matricula, DNI_cliente, Fecha_venta) VALUES
+	('ERTG5', 'DGFFFT', '21142189', 20181229);"""
+cursor.execute(sql_command)
+
+
+sql_command="""INSERT INTO Ventas(Identificador, Matricula, DNI_cliente, Fecha_venta) VALUES
+	('T4WT5', 'DGFRGT', '7414217', 20181229);"""
+cursor.execute(sql_command)
+
+
+sql_command="""INSERT INTO Ventas(Identificador, Matricula, DNI_cliente, Fecha_venta) VALUES
+	('87TH5', 'FRRGT', '14142123', 20181229);"""
+cursor.execute(sql_command)
 
 
 print("Se han metido todos los datos en la BD")
@@ -248,26 +339,14 @@ while continuar:
 	elif entrada == 2:
 
 		cual = raw_input("\nDNI del trabajador del que desea comprobar las ventas realizadas: ")
-		cursor.execute("select * from Trabajador where DNI= "+cual+";")
+		cursor.execute("select * from Gestiona2 g inner join Ventas v on g.Id_Venta = v.Identificador where g.Id_trabajador= "+cual+";")
 
 		print("")
 		print(cursor.fetchall())
-
-		cursor.execute("select *  from Ventas where DNI_vendedor= "+cual+";")
-		print("")
-		print(cursor.fetchall())
-
 
 	elif entrada ==3:
 
-		sql_command1="""select * FROM Trabajador;"""
-		cursor.execute(sql_command1)
-		print("")
-		print(cursor.fetchall())
-
-		print("Historial de ventas de los trabajadores ")
-		sql_command2="""select * FROM Ventas;"""
-		cursor.execute(sql_command2)
+		cursor.execute("select * from Gestiona2 g inner join Ventas v on g.Id_venta = v.Identificador")
 		print("")
 		print(cursor.fetchall())
 
